@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3_min_timer_music_bird_relax_music_with_nature_sounds_in_the_forest_for_work_and_study_-1481819863326180160.mp3-a74c98ee7511cba7a817fec9ba71ed58.mp3str"
+
+[deps]
+
+source_file="res://sounds/3_min_timer_music_bird_relax_music_with_nature_sounds_in_the_forest_for_work_and_study_-1481819863326180160.mp3"
+dest_files=[ "res://.import/3_min_timer_music_bird_relax_music_with_nature_sounds_in_the_forest_for_work_and_study_-1481819863326180160.mp3-a74c98ee7511cba7a817fec9ba71ed58.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

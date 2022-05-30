@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://environment/Levels.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Levels" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+rect_pivot_offset = Vector2( 132, 177 )
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+margin_top = -2.0
+margin_right = 1022.0
+margin_bottom = 590.0
+color = Color( 0.976471, 0.956863, 0.8, 1 )
+
+[node name="Level01" type="Button" parent="."]
+margin_left = 101.0
+margin_top = 47.0
+margin_right = 220.0
+margin_bottom = 127.0
+custom_styles/normal = SubResource( 1 )
+text = "1"
+
+[node name="Level02" type="Button" parent="."]
+margin_left = 444.0
+margin_top = 155.0
+margin_right = 563.0
+margin_bottom = 235.0
+custom_styles/normal = SubResource( 1 )
+text = "2"
+
+[node name="Level03" type="Button" parent="."]
+margin_left = 804.0
+margin_top = 31.0
+margin_right = 923.0
+margin_bottom = 111.0
+custom_styles/normal = SubResource( 1 )
+text = "3"
+
+[node name="Level04" type="Button" parent="."]
+margin_left = 103.0
+margin_top = 417.0
+margin_right = 222.0
+margin_bottom = 497.0
+custom_styles/normal = SubResource( 1 )
+text = "4"
+
+[node name="Level05" type="Button" parent="."]
+margin_left = 444.0
+margin_top = 313.0
+margin_right = 563.0
+margin_bottom = 393.0
+custom_styles/normal = SubResource( 1 )
+text = "5"
+
+[node name="Level06" type="Button" parent="."]
+margin_left = 794.0
+margin_top = 424.0
+margin_right = 913.0
+margin_bottom = 504.0
+custom_styles/normal = SubResource( 1 )
+text = "6"
+
+[node name="back" type="Button" parent="."]
+margin_left = 877.0
+margin_top = 537.0
+margin_right = 1007.0
+margin_bottom = 579.0
+custom_styles/normal = SubResource( 1 )
+text = "Back"
+
+[connection signal="pressed" from="Level01" to="." method="_on_Level01_pressed"]
+[connection signal="pressed" from="Level02" to="." method="_on_Level02_pressed"]
+[connection signal="pressed" from="Level03" to="." method="_on_Level03_pressed"]
+[connection signal="pressed" from="Level04" to="." method="_on_Level04_pressed"]
+[connection signal="pressed" from="Level05" to="." method="_on_Level05_pressed"]
+[connection signal="pressed" from="Level06" to="." method="_on_Level06_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

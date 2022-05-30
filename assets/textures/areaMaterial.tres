@@ -1,0 +1,8 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://assets/textures/limestone-cliffs_albedo.png" type="Texture" id=1]
+
+[resource]
+albedo_color = Color( 0.776471, 0.768627, 0.615686, 1 )
+albedo_texture = ExtResource( 1 )
+metallic_texture = ExtResource( 1 )

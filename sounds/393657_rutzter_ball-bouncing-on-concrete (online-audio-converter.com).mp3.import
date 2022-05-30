@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/393657_rutzter_ball-bouncing-on-concrete (online-audio-converter.com).mp3-f6f77d4c59c156b8f5ede4b31354732a.mp3str"
+
+[deps]
+
+source_file="res://sounds/393657_rutzter_ball-bouncing-on-concrete (online-audio-converter.com).mp3"
+dest_files=[ "res://.import/393657_rutzter_ball-bouncing-on-concrete (online-audio-converter.com).mp3-f6f77d4c59c156b8f5ede4b31354732a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

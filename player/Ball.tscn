@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/models/pixar-ball.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/textures/bascket.png" type="Texture" id=2]
+[ext_resource path="res://player/Ball.gd" type="Script" id=3]
+[ext_resource path="res://sounds/393657_rutzter_ball-bouncing-on-concrete (online-audio-converter.com).mp3" type="AudioStream" id=4]
+
+[sub_resource type="PhysicsMaterial" id=3]
+friction = 4.0
+rough = true
+bounce = 0.5
+
+[sub_resource type="SphereShape" id=1]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 2 )
+metallic = 0.7
+roughness = 0.17
+
+[node name="Ball" type="RigidBody"]
+mass = 100.0
+physics_material_override = SubResource( 3 )
+angular_damp = 1.0
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Model" type="MeshInstance" parent="."]
+material_override = SubResource( 4 )
+mesh = ExtResource( 1 )
+skeleton = NodePath("../CollisionShape")
+material/0 = null
+
+[node name="CameraRig" type="Position3D" parent="."]
+
+[node name="Camera" type="Camera" parent="CameraRig"]
+transform = Transform( 0.999848, 0.0698096, -0.0151142, 0, 6.9282, 0.5, 0.0174524, -3.99939, 0.865893, 0, 2.85, 3.5 )
+current = true
+
+[node name="FloorCheck" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, -1.5, 0 )
+
+[node name="jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

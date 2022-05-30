@@ -1,0 +1,81 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/models/blocks.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://player/Ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/textures/evening_01.hdr" type="Texture" id=3]
+[ext_resource path="res://environment/DeathZone.gd" type="Script" id=4]
+[ext_resource path="res://environment/VictoryZone.gd" type="Script" id=5]
+[ext_resource path="res://assets/textures/areaMaterial.tres" type="Material" id=6]
+[ext_resource path="res://environment/MenuButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://environment/Level01.gd" type="Script" id=9]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 3 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+
+[sub_resource type="CubeMesh" id=5]
+material = ExtResource( 6 )
+size = Vector3( 500, 1, 500 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 500, 1, 500 )
+
+[sub_resource type="BoxShape" id=4]
+
+[node name="Level01" type="Spatial"]
+script = ExtResource( 9 )
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 4, 4, 4 )
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+data = {
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 1, 65535, 0, 655361, 0, 1, 1441793, 1, 1, 1441794, 65535, 1, 655362, 65536, 65529, 0, 65537, 65529, 0, 131071, 65529, 0, 65536, 65530, 5, 65537, 65530, 0, 131071, 65530, 0, 65536, 65531, 0, 65537, 65531, 0, 131071, 65531, 0, 0, 65532, 4, 0, 65533, 0, 0, 65534, 1441792, 0, 65535, 1441792, 1, 65535, 2, 65535, 65535, 1048578 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Ball" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.709038, 0.509146, -0.487889, -0.213226, 0.814285, 0.539884, 0.67216, -0.278768, 0.685922, 0, 5, 0 )
+light_color = Color( 0.878431, 0.796078, 0.521569, 1 )
+light_energy = 1.56
+light_indirect_energy = 1.587
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="DeathZone" type="Area" parent="."]
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="DeathZone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.208693, -10, 0.158692 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="DeathZone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
+shape = SubResource( 3 )
+
+[node name="VictoryZone" type="Area" parent="."]
+script = ExtResource( 5 )
+NEXT_LEVEL = "res://environment/Level02.tscn"
+
+[node name="CollisionShape" type="CollisionShape" parent="VictoryZone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0655, -24.4121 )
+shape = SubResource( 4 )
+
+[node name="MenuButton" parent="." instance=ExtResource( 7 )]
+
+[connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_DeathZone_body_entered"]
+[connection signal="body_entered" from="VictoryZone" to="VictoryZone" method="_on_VictoryZone_body_entered"]
